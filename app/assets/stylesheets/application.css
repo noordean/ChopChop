@@ -13,3 +13,69 @@
  *= require_tree .
  *= require_self
  */
+ body {
+  font-family: 'Gentium Basic';
+ }
+.img-logo {
+  width: 100px;
+  height: 100px;
+}
+.header-title {
+  font-weight: bold;
+  font-size: 25px;
+}
+.header-login {
+  margin: 8px;
+}
+.header-login > span {
+  margin: 4px;
+}
+.header-login > .fa, .login-btn, .reg-btn {
+  cursor: pointer;
+} 
+.fa-facebook:hover {
+  color: blue
+}
+.fa-google:hover {
+  color: red
+}
+.navbar {
+  color: white;
+  background-color: green;
+}
+.search-input {
+  margin-left: 3px;
+  height: 34px;
+}
+.option > .fa {
+  margin-right: 2px;
+}
+.carousel-item > img {
+  width: 500px;
+  height: 480px;
+}
+.form-right > form {
+  margin: 20px 4px 0px 4px;
+}
+.form-right {
+  border-bottom: 1px solid #A9A9A9
+}
+.hot-recipes {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 30px;
+}
+.hot-food {
+  width: 350px;
+  height: 300px;
+  margin: 3px;
+}
+.price {
+  font-weight: bold;
+}
+.footer-header {
+  margin-top: 40px;
+}
+.footer-text {
+  margin: 20px;
+}
