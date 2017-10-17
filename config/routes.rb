@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
+  resources :users
   root 'home#index'
-
-  # get '/about' => 'home#about'
+  
+  post '/signup' => 'home#signup'
+  get '/signup' => 'home#signup_refresh'
 end
