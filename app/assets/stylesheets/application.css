@@ -79,3 +79,7 @@
 .footer-text {
   margin: 20px;
 }
+.error-list {
+  list-style-type: none;
+  color: red;
+}
