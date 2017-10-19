@@ -10,19 +10,19 @@
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="<%= asset_path('food_1.jpg') %>" alt="First slide">
+          <img class="d-block w-100" src="<%= asset_path('food_1.jpg') %>" alt="hot_food_at_chopchop">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="<%= asset_path('food_2.jpg') %>" alt="Second slide">
+          <img class="d-block w-100" src="<%= asset_path('food_2.jpg') %>" alt="hot_food_at_chopchop">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="<%= asset_path('food_3.jpg') %>" alt="Third slide">
+          <img class="d-block w-100" src="<%= asset_path('food_3.jpg') %>" alt="hot_food_at_chopchop">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="<%= asset_path('food_4.jpg') %>" alt="Second slide">
+          <img class="d-block w-100" src="<%= asset_path('food_4.jpg') %>" alt="hot_food_at_chopchop">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="<%= asset_path('food_5.jpg') %>" alt="Third slide">
+          <img class="d-block w-100" src="<%= asset_path('food_5.jpg') %>" alt="hot_food_at_chopchop">
         </div>
     </div>
     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -36,41 +36,76 @@
     </div>
   </div>
   <div class="col-sm-4 form-right">
-    <%= form_for :user, url: "/signup" do |f| %>
-      <% if @user.errors.any? %>
-        <h6>Error(s):</h6>
-        <ul>
-          <% @user.errors.full_messages.each do |message| %>
-            <li class="error-list"><%= message %></li>
+  <% if !@user_id %>
+      <%= form_for :user, url: "/signup" do |f| %>
+        <% if @user.errors.any? %>
+          <h6>Error(s):</h6>
+          <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li class="error-list"><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
+        <% flash.each do |key, value| %>
+          <% if value == 'Registration successful!' %>
+            <div class="alert alert-<%= key %>"><%= value %></div>
           <% end %>
-        </ul>
-      <% end %>
-      <% flash.each do |key, value| %>
-        <div class="alert alert-<%= key %>"><%= value %></div>
-      <% end %>
-      <fieldset>
-        <legend>Registration</legend>
-        <div class="form-group">
-          <%= f.label :name %>
-          <%= f.text_field :name, class: 'form-control', placeholder: 'Enter name', required: 'true' %>
+        <% end %>
+        <fieldset>
+          <legend>Registration</legend>
+          <div class="form-group">
+            <%= f.label :name %>
+            <%= f.text_field :name, class: 'form-control', placeholder: 'Enter name', required: 'true' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, class: 'form-control', placeholder: 'Enter email', required: 'true' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password %>
+            <%= f.password_field :password, class: 'form-control', placeholder: 'Enter password', required: 'true' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password_confirmation, "Confirm Password" %>
+            <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Re-type Password', required: 'true' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Create my account", class: "btn btn-success reg-btn" %>
+          </div>
+        </fieldset>
+        <% end %>
+      <% else %>
+      <div class="comment-header">
+        <h5>Comments From Our Customers</h5>
+      </div>
+      <div class="row comment-wrapper">
+        <div class="col-sm-9">
+          <h6>Nurudeen</h6>
+          <p><b>I really enjoyed the meal. Kudos!</b></p>
         </div>
-        <div class="form-group">
-          <%= f.label :email %>
-          <%= f.email_field :email, class: 'form-control', placeholder: 'Enter email', required: 'true' %>
+        <div class="col-sm-3">
+          <small>1 hour ago</small>
         </div>
-        <div class="form-group">
-          <%= f.label :password %>
-          <%= f.password_field :password, class: 'form-control', placeholder: 'Enter password', required: 'true' %>
+        <div class="col-sm-9">
+          <h6>Emma</h6>
+          <p><b>I really enjoyed the meal. Kudos!</b></p>
         </div>
-        <div class="form-group">
-          <%= f.label :password_confirmation, "Confirm Password" %>
-          <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Re-type Password', required: 'true' %>
+        <div class="col-sm-3">
+          <small>2 hours ago</small>
         </div>
-        <div class="form-group">
-          <%= f.submit "Create my account", class: "btn btn-success reg-btn" %>
-        </div>
-      </fieldset>
-    <% end %>
+      </div>
+      <div class="comment-form">
+        <%= form_for :comment, url: "/comment" do |f| %>
+              <div class="form-group">
+                <textarea name="comment[message]" class="form-control comment-input" placeholder="Write comment" id="message" rows="3"></textarea>
+              </div>
+            <div class="form-group">
+              <%= f.submit "Leave a comment", class: "btn btn-success reg-btn" %>
+            </div>
+        <% end %>
+      </div>
+  <% end %>
+
   </div>
 </div>
 <div class="hot-recipes">

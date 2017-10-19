@@ -83,3 +83,27 @@
   list-style-type: none;
   color: red;
 }
+.login-input {
+  height: 32px;
+}
+.alert {
+  margin-top: 2px;
+}
+.comment-input {
+  resize: none;
+}
+.comment-header {
+  margin-top: 3px;
+}
+.comment-wrapper {
+  margin-top: 20px;
+  margin-right: 4px;
+  max-height: 280px;
+  overflow-y: scroll;
+  background-color: #F0FFF0
+}
+.comment-form {
+  position: absolute;
+  bottom: 0px;
+  width: 90%;
+}
