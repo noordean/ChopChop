@@ -5,13 +5,35 @@
       <span class="header-title">ChopChop</span>
     </div>
     <div class="col-sm-6">
-      <div class="pull-right header-login">
-        <span class="fa fa-facebook"></span>
-        <span class="fa fa-google"></span>
-        <span>
-          <a href="#" class="btn btn-outline-success btn-sm login-btn" data-toggle="modal" data-target="#login">Login</a>
-        </span>
-      </div>
+      <% if !@user_id %>
+        <div class="pull-right header-login">
+          <span class="fa fa-facebook"></span>
+          <span class="fa fa-google"></span>
+          <span>
+            <%= form_for :session, url: "/login", :html => {:class => "form-inline"} do |f| %>
+              <div class="form-group">
+                <label for="email" class="sr-only">Email</label>
+                <%= f.email_field :email, class: 'form-control login-input', placeholder: 'Enter email', required: 'true' %>
+              </div>
+              <div class="form-group mx-sm-3">
+                <label for="password" class="sr-only">Password</label>
+                <%= f.password_field :password, class: 'form-control login-input', placeholder: 'Enter password', required: 'true' %>
+              </div>
+              <button type="submit" class="btn btn-outline-success btn-sm login-btn">Login</button>
+            <% end %>
+            <% flash.each do |key, value| %>
+              <% if value == 'Incorrect email/password combination' %>
+                <div class="alert alert-<%= key %>"><%= value %></div>
+              <% end %>
+            <% end %>
+          </span>
+        </div>
+      <% else %>
+        <div class="pull-right header-login">
+          <span><%= @current_user %></span>
+          <span> <a href="/logout" class="btn btn-danger btn-sm">Logout</a> </span>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
