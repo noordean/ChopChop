@@ -1,0 +1,9 @@
+development:
+  cloud_name: "chopchop"
+  api_key: <%= ENV['API_KEY'] %>
+  api_secret: <%= ENV['API_SECRET'] %>
+
+production:
+  cloud_name: "chopchop"
+  api_key: <%= ENV['API_KEY'] %>
+  api_secret: <%= ENV['API_SECRET'] %>
