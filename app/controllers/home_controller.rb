@@ -7,6 +7,7 @@ class HomeController < ApplicationController
     else
       @current_user = nil
     end
+    @items = Item.all
   end
   def signup
     @user = User.new(signup_param)

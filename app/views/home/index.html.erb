@@ -1,3 +1,6 @@
+<% if @user_id && @current_user == 'Admin' %>
+  <%= render 'admin_form.html'  %>
+<% else %>
 <div class="row">
   <div class="col-sm-8">
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -109,96 +112,32 @@
   </div>
 </div>
 <div class="hot-recipes">
-  <h4>HOTTEST RECIPES AT CHOPCHOP</h4>
+  <h4>HOT RECIPES AT CHOPCHOP</h4>
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-md-6 col-lg-4">
-      <img class="hot-food" src="<%= asset_path('amala.jpg') %>" alt="First slide" />
-      <div>Amala with egusi, served with beef/pomo/chicken</div>
-      <div class="row">
-        <div class="col-sm-8">
-          <div class="price">#1200</div>
-        </div>
-        <div class="col-sm-4">
-          <div class="pull-right">
-            <a href="#" class="btn btn-success btn-sm">Order</a>
+    <% if @items %>
+      <% @items.each do |item| %>
+        <div class="col-md-6 col-lg-4">
+          <%= image_tag item.image_url(:thumb).to_s %>
+          <div><%= item.name %></div>
+          <div class="row">
+            <div class="col-sm-8">
+              <div class="price">#<%= item.price %></div>
+            </div>
+            <div class="col-sm-4">
+              <div class="pull-right">
+                <a href="#" class="btn btn-success btn-sm">Order</a>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-4">
-      <img class="hot-food" src="<%= asset_path('pounded_yam.jpg') %>" alt="First slide">
-      <div>Pounded yam with efo-riro, with beef/pomo/chicken</div>
-      <div class="row">
-        <div class="col-sm-8">
-          <div class="price">#1350</div>
-        </div>
-        <div class="col-sm-4">
-          <div class="pull-right">
-            <a href="#" class="btn btn-success btn-sm">Order</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-4">
-      <img class="hot-food" src="<%= asset_path('jollof.jpeg') %>" alt="First slide">
-      <div>Jollof rice with chicken/plantain/beef/fish</div>
-      <div class="row">
-        <div class="col-sm-8">
-          <div class="price">#850</div>
-        </div>
-        <div class="col-sm-4">
-          <div class="pull-right">
-            <a href="#" class="btn btn-success btn-sm">Order</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-4">
-      <img class="hot-food" src="<%= asset_path('ofada_rice.jpg') %>" alt="First slide">
-      <div>Ofada rice with chicken/plantain/beef/fish</div>
-      <div class="row">
-        <div class="col-sm-8">
-          <div class="price">#950</div>
-        </div>
-        <div class="col-sm-4">
-          <div class="pull-right">
-            <a href="#" class="btn btn-success btn-sm">Order</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-4">
-      <img class="hot-food" src="<%= asset_path('watermelon.jpg') %>" alt="First slide">
-      <div>Fresh watermelon</div>
-      <div class="row">
-        <div class="col-sm-8">
-          <div class="price">#800</div>
-        </div>
-        <div class="col-sm-4">
-          <div class="pull-right">
-            <a href="#" class="btn btn-success btn-sm">Order</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-4">
-      <img class="hot-food" src="<%= asset_path('cheesecake.jpg') %>" alt="First slide">
-      <div>Cheesecakes</div>
-      <div class="row">
-        <div class="col-sm-8">
-          <div class="price">#1500</div>
-        </div>
-        <div class="col-sm-4">
-          <div class="pull-right">
-            <a href="#" class="btn btn-success btn-sm">Order</a>
-          </div>
-        </div>
-      </div>
-    </div>
+        </div>     
+      <% end %>
+    <% end %>
   </div>
 </div>
+<% end %>
+
 <div class="row footer-header">
   <div class="col-sm-6">
     <div class="footer-text">

@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   include SessionsHelper
   def new
   end
-
   def login
     user = User.find_by(email: login_param[:email])
     if user && user.authenticate(login_param[:password])

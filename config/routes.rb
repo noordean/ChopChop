@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :items
   get 'sessions/new'
 
   resources :users
@@ -9,4 +10,6 @@ Rails.application.routes.draw do
 
   post '/login' => 'sessions#login'
   get '/logout' => 'sessions#logout'
+
+  post '/add' => 'items#add_item'
 end
