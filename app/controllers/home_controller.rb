@@ -2,12 +2,26 @@ class HomeController < ApplicationController
   def index
     @user = User.new
     @user_id = session[:user_id]
+    @search_keyword = session[:search_keyword]
     if @user_id
       @current_user = User.find_by(id: session[:user_id]).name
     else
       @current_user = nil
     end
-    @items = Item.all
+    if @search_keyword
+      if ['breakfast', 'lunch', 'dinner', 'dessert', 'fruit'].include? @search_keyword
+        session.delete(:search_keyword)
+        return @items = Item.where('category LIKE ?', "%#{@search_keyword}%")
+      end
+      if !Item.where('name LIKE ?', "%#{@search_keyword}%").empty?
+        @items = Item.where('name LIKE ?', "%#{@search_keyword}%")
+        session.delete(:search_keyword)
+      else
+       @items = Item.all         
+      end
+    else
+      @items = Item.all
+    end
   end
   def signup
     @user = User.new(signup_param)
@@ -21,7 +35,6 @@ class HomeController < ApplicationController
   def signup_refresh
     redirect_to root_path
   end
-
   private
   def signup_param
     params.require(:user).permit(:name, :email, :password, :password_confirmation)
