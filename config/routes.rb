@@ -12,4 +12,12 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#logout'
 
   post '/add' => 'items#add_item'
+  
+  post '/search' => 'items#search_items'
+
+  get '/breakfast' => 'items#breakfast'
+  get '/lunch' => 'items#lunch'
+  get '/dinner' => 'items#dinner'
+  get '/dessert' => 'items#dessert'
+  get '/fruits' => 'items#fruits'
 end

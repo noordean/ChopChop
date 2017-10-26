@@ -107,3 +107,7 @@
   bottom: 0px;
   width: 90%;
 }
+.search-btn {
+  background-color: green;
+  cursor: pointer;
+}

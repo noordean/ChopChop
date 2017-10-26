@@ -1,13 +1,13 @@
 <div>
   <nav class="navbar navbar-light">
-    <form class="form-inline">
-      <div>Search</div>
-      <input class="form-control mr-sm-2 search-input" type="text" placeholder="keyword" aria-label="Search">
-    </form>
-     <a class="option"><i class="fa fa-cutlery" aria-hidden="true"></i>Breakfast</a>
-     <a class="option"><i class="fa fa-cutlery" aria-hidden="true"></i>Lunch</a>
-     <a class="option"><i class="fa fa-cutlery" aria-hidden="true"></i>Dinner</a>
-     <a class="option"><i class="fa fa-glass" aria-hidden="true"></i>Dessert</a>
-     <a class="option"><i class="fa fa-apple" aria-hidden="true"></i>Fruits</a>
+    <%= form_for :search, url: "/search", :html => {:class => "form-inline"} do |f| %>
+      <%= f.text_field :keyword, class: 'form-control mr-sm-2 search-input', placeholder: 'keyword', required: 'true' %>
+      <button type="submit" class="btn btn-success btn-sm search-btn">Search</button>
+    <% end %>
+     <a href="/breakfast#items-list" class="option"><i class="fa fa-cutlery" aria-hidden="true"></i>Breakfast</a>
+     <a href="/lunch#items-list" class="option"><i class="fa fa-cutlery" aria-hidden="true"></i>Lunch</a>
+     <a href="/dinner#items-list" class="option"><i class="fa fa-cutlery" aria-hidden="true"></i>Dinner</a>
+     <a href="/dessert#items-list" class="option"><i class="fa fa-glass" aria-hidden="true"></i>Dessert</a>
+     <a href="/fruits#items-list" class="option"><i class="fa fa-apple" aria-hidden="true"></i>Fruits</a>
   </nav>
 </div>
