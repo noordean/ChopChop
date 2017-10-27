@@ -1,0 +1,32 @@
+<div class="modal fade" id="order" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h5 class="modal-title">Confirm Order</h5>
+      </div>
+      <% if !session[:user_id] %>
+        <h6 class="order-error">Kindly login before placing an order</h6>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+        </div>
+      <% else %>
+        <%= form_for :question, url: "/order", html: { class:"form-horizontal" } do %>
+        <div class="modal-body">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">Address</label>
+                <div class="col-sm-10">
+                <textarea name="order[receiver_address]" type="text" class="form-control address-input" placeholder="Give a location to deliver the food item" rows="3" required></textarea>
+                </div>
+            </div>
+            <input type="hidden" name="order[item_id]" id="itemId"/>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

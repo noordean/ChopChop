@@ -5,6 +5,7 @@ class HomeController < ApplicationController
     @search_keyword = session[:search_keyword]
     if @user_id
       @current_user = User.find_by(id: session[:user_id]).name
+      @comments = Comment.order(created_at: :DESC).all
     else
       @current_user = nil
     end
@@ -37,6 +38,6 @@ class HomeController < ApplicationController
   end
   private
   def signup_param
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :phone_number, :password, :password_confirmation)
   end
 end

@@ -65,6 +65,10 @@
             <%= f.email_field :email, class: 'form-control', placeholder: 'Enter email', required: 'true' %>
           </div>
           <div class="form-group">
+            <%= f.label :phone_number %>
+            <%= f.text_field :phone_number, class: 'form-control', placeholder: '07012345678', required: 'true' %>
+          </div>
+          <div class="form-group">
             <%= f.label :password %>
             <%= f.password_field :password, class: 'form-control', placeholder: 'Enter password', required: 'true' %>
           </div>
@@ -82,25 +86,22 @@
         <h5>Comments From Our Customers</h5>
       </div>
       <div class="row comment-wrapper">
-        <div class="col-sm-9">
-          <h6>Nurudeen</h6>
-          <p><b>I really enjoyed the meal. Kudos!</b></p>
-        </div>
-        <div class="col-sm-3">
-          <small>1 hour ago</small>
-        </div>
-        <div class="col-sm-9">
-          <h6>Emma</h6>
-          <p><b>I really enjoyed the meal. Kudos!</b></p>
-        </div>
-        <div class="col-sm-3">
-          <small>2 hours ago</small>
-        </div>
+        <% if @comments %>
+          <% @comments.each do |comment| %>
+            <div class="col-sm-9">
+              <h6><%= comment.poster %></h6>
+              <p><b><%= comment.content %></b></p>
+            </div>
+            <div class="col-sm-3">
+              <small><%= time_ago_in_words comment.created_at %> ago</small>
+            </div>
+          <% end %>
+        <% end %>
       </div>
       <div class="comment-form">
         <%= form_for :comment, url: "/comment" do |f| %>
               <div class="form-group">
-                <textarea name="comment[message]" class="form-control comment-input" placeholder="Write comment" id="message" rows="3"></textarea>
+                <textarea name="comment[content]" class="form-control comment-input" placeholder="Write comment" id="message" rows="3" required></textarea>
               </div>
             <div class="form-group">
               <%= f.submit "Leave a comment", class: "btn btn-success reg-btn" %>
@@ -127,7 +128,7 @@
             </div>
             <div class="col-sm-4">
               <div class="pull-right">
-                <a href="#" class="btn btn-success btn-sm">Order</a>
+                <a href="#" class="btn btn-success btn-sm" data-toggle="modal" data-target="#order" onClick="saveItemId('<%= item.id %>')">Order</a>
               </div>
             </div>
           </div>

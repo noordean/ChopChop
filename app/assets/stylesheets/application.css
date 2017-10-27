@@ -52,7 +52,7 @@
 }
 .carousel-item > img {
   width: 500px;
-  height: 480px;
+  height: 550px;
 }
 .form-right > form {
   margin: 20px 4px 0px 4px;
@@ -110,4 +110,13 @@
 .search-btn {
   background-color: green;
   cursor: pointer;
+}
+.address-input {
+  resize: none;
+}
+.option {
+  color: white;
+}
+.order-error {
+  margin: 2px auto;
 }
