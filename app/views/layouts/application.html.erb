@@ -14,7 +14,13 @@
   </head>
 
   <body>
+    <%= render 'home/order_modal.html' %>
     <%= render 'home/header.html'  %>
+    <% flash.each do |key, value| %>
+      <% if value == 'Order sent successfully. Check your mail for order details' %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+    <% end %>
     <%= render 'home/navbar.html'  %>
     <%= yield %>
   </body>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h4>Hi <%= @order.receiver_name %></h4>
+    <p>
+        Your order has been received. Kindly check the order details below.<br>
+        One of our agents will contact you shortly.<br><br>
+        <b>Product Name:</b> <%= @order.product_name %><br>
+        <b>Product Price:</b> #<%= @order.product_price %><br>
+        <b>Receiver's Name:</b> <%= @order.receiver_name %><br>
+        <b>Receiver's Address:</b> <%= @order.receiver_address %><br>
+        <b>Receiver's Number:</b> <%= @order.receiver_number %>
+    </p>
+  </body>
+</html>

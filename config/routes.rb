@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :comments
+  resources :orders
   resources :items
   get 'sessions/new'
 
@@ -20,4 +22,6 @@ Rails.application.routes.draw do
   get '/dinner' => 'items#dinner'
   get '/dessert' => 'items#dessert'
   get '/fruits' => 'items#fruits'
+  post '/order' => 'items#order'
+  post '/comment' => 'comments#comment'
 end
