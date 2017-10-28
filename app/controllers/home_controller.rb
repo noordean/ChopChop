@@ -12,10 +12,10 @@ class HomeController < ApplicationController
     if @search_keyword
       if ['breakfast', 'lunch', 'dinner', 'dessert', 'fruit'].include? @search_keyword
         session.delete(:search_keyword)
-        return @items = Item.where('category LIKE ?', "%#{@search_keyword}%")
+        return @items = Item.where('lower(category) LIKE ?', "%#{@search_keyword.downcase}%")
       end
-      if !Item.where('name LIKE ?', "%#{@search_keyword}%").empty?
-        @items = Item.where('name LIKE ?', "%#{@search_keyword}%")
+      if !Item.where('lower(name) LIKE ?', "%#{@search_keyword.downcase}%").empty?
+        @items = Item.where('lower(name) LIKE ?', "%#{@search_keyword.downcase}%")
         session.delete(:search_keyword)
       else
        @items = Item.all         
