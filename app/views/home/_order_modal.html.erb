@@ -8,7 +8,7 @@
       <% if !session[:user_id] %>
         <h6 class="order-error">Kindly login before placing an order</h6>
         <div class="modal-footer">
-          <button type="button" class="btn btn-sm btn-danger" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-sm btn-danger modal-close" data-dismiss="modal">Close</button>
         </div>
       <% else %>
         <%= form_for :question, url: "/order", html: { class:"form-horizontal" } do %>
@@ -21,8 +21,8 @@
             </div>
             <input type="hidden" name="order[item_id]" id="itemId"/>
             <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-success">Submit</button>
+            <button type="button" class="btn btn-danger modal-close" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-success modal-submit">Submit</button>
             </div>
         </div>
         <% end %>

@@ -120,3 +120,6 @@
 .order-error {
   margin: 2px auto;
 }
+.modal-close, .modal-submit {
+  cursor: pointer;
+}
